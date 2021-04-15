@@ -11,7 +11,7 @@ export default function Posts({ posts }) {
         return (
           <Card key={id}>
             <Card.Body>
-              <Card.Title>{title}</Card.Title>
+              <Card.Title>{`${id}-${title}`}</Card.Title>
               <Card.Text>{body}</Card.Text>
               <Link href={`/posts/${id}`} passHref>
                 <Card.Link>See more</Card.Link>
@@ -25,7 +25,7 @@ export default function Posts({ posts }) {
 }
 
 export const getStaticProps = async () => {
-  const posts = await getPosts();
+  const posts = await getPosts(15);
   return {
     props: { posts },
   };

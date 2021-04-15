@@ -2,9 +2,11 @@ import axios from 'axios';
 
 const fakeApi = 'https://jsonplaceholder.typicode.com';
 
-export const getPosts = async () => {
+export const getPosts = async (limit = 10) => {
   try {
-    const response = await axios.get(`${fakeApi}/posts?_limit=5`);
+    const response = await axios.get(`${fakeApi}/posts`, {
+      params: { _limit: limit },
+    });
     return response.data;
   } catch (error) {
     console.error(error);
